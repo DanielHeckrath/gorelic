@@ -94,6 +94,11 @@ func (c resettableComponent) ClearSentData() {
 	}
 }
 
+//Harvest triggers an immediate report to new relic
+func (agent *Agent) Harvest() error {
+	return agent.plugin.Harvest()
+}
+
 //WrapHTTPHandlerFunc  instrument HTTP handler functions to collect HTTP metrics
 func (agent *Agent) WrapHTTPHandlerFunc(h tHTTPHandlerFunc) tHTTPHandlerFunc {
 	agent.CollectHTTPStat = true
